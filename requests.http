@@ -1,45 +1,49 @@
-# примеры API-запросов
+# Примеры API-запросов
+@baseUrl = http://localhost:8000/api/v1
 
-@baseUrl = http://localhost:8000/api/v1/
+###
 
-# получение списка курсов
+# Получение списка курсов
 GET {{baseUrl}}/courses/
 Content-Type: application/json
 
 ###
 
-# создание курса
-POST {{baseUrl}}/course
-Content-Type: application/jsons/
+# Создание курса
+POST {{baseUrl}}/courses/
+Content-Type: application/json
 
 {
   "name": "Химия",
-  "students": ""
+  "students": []
 }
 
 ###
 
-# обновление датчика
-PATCH {{baseUrl}}/courses/1/
+# Фильтрация курсов по имени
+GET {{baseUrl}}/courses/?name=Химия
+Content-Type: application/json
+
+###
+
+# Фильтрация курсов по id
+GET {{baseUrl}}/courses/?id=1
+Content-Type: application/json
+
+
+###
+
+# Обновление курса
+PUT {{baseUrl}}/courses/1/
 Content-Type: application/json
 
 {
-  "description": "Перенес датчик на балкон"
+  "name": "Обновлённая Химия",
+  "students": []
 }
 
 ###
 
-# добавление измерения
-POST {{baseUrl}}/measurements/
-Content-Type: application/json
-
-{
-  "sensor": 2,
-  "temperature": 22.3
-}
-
-###
-
-# получение информации по датчику
-GET {{baseUrl}}/sensors/1/
+# Удаление курса
+DELETE {{baseUrl}}/courses/1/
 Content-Type: application/json
